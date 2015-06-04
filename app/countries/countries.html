@@ -1,0 +1,30 @@
+<div>
+    <table class="pure-table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Country Code</th>
+                <th scope="col">Capital</th>
+                <th scope="col">Area in KM2</th>
+                <th scope="col">Population</th>
+                <th scope="col">Continent</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="country in countries">
+                <th scope="row"><a href="#/countries/{{country.countryName}}/capital">{{country.countryName}}</a></th>
+                <td>{{country.countryCode}}</td>
+                <td>{{country.capital}}</td>
+                <td>{{country.areaInSqKm | number}}</td>
+                <td>{{country.population | number}}</td>
+                <td>{{country.continent}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<div class="pure-menu pure-menu-horizontal tac">
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item"><a href="#/" class="pure-menu-link">Home</a></li>
+    </ul>
+</div>

@@ -1,0 +1,42 @@
+<table class="centerTable">
+    <caption>
+        <H1 class="tal">{{country.countryCode}}</H1>
+    </caption>
+    <tr>
+        <td class="tar width50">Population of Country:&nbsp;</td>
+        <td>{{country.population | number}}</td>
+    </tr>
+    <tr>
+        <td class="tar width50">Area:&nbsp;</td>
+        <td>{{country.areaInSqKm | number}}</td>
+    </tr>
+    <tr>
+        <td class="tar width50">Capital:&nbsp;</td>
+        <td>{{country.capital}}</td>
+    </tr>
+    <tr>
+        <td class="tar width50">Population of Capital:&nbsp;</td>
+        <td>{{country.capitalPopulation | number}}</td>
+    </tr>
+    <tr>
+        <td class="tar width50">3 Neighbors:&nbsp;</td>
+        <td>
+            <ul ng-class="{true:'padleft20', false:'unstyledlist'}[countryNeighbors.length > 1 ]">
+                <li ng-repeat="ncountry in country.countryNeighbors">{{ncountry.countryName}}</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td><img class="pure-image" width="175"
+                 src="http://www.geonames.org/img/country/250/{{country.countryCode}}.png"/></td>
+        <td><img class="pure-image" width="250"
+                 ng-src="http://www.geonames.org/flags/x/{{country.countryCode | lowercase}}.gif"/></td>
+    </tr>
+</table>
+<br>
+<div class="pure-menu pure-menu-horizontal tac">
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item"><a href="#/" class="pure-menu-link">Home</a></li>
+        <li class="pure-menu-item"><a href="#/countries" class="pure-menu-link">Browse Countries</a></li>
+    </ul>
+</div>

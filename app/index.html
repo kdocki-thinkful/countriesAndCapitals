@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="cacApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Countries and Capitals</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link href="components/cac-app.css" rel="stylesheet">
+</head>
+<body ng-controller="MainCtrl" ng-class="{loading: isLoading}">
+<header class="tac">
+    <h1><i class="fa fa-university"></i> Countries and Capitals</h1>
+</header>
+<main class="animate-view-container group">
+    <div ng-view class="animate-view"></div>
+</main>
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="bower_components/lodash/lodash.min.js"></script>
+<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-messages/angular-messages.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="components/cac-library.js"></script>
+<script src="components/cac-app-views.js"></script>
+<script src="countries/countries.js"></script>
+<script src="capital/capital.js"></script>
+<script src="home/home.js"></script>
+<script src="cac-app.js"></script>
+</body>
+</html>
+</html>
