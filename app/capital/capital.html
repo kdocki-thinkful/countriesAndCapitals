@@ -1,4 +1,4 @@
-<table class="centerTable">
+<table class="capitalTable">
     <caption>
         <H1 class="tal">{{country.countryCode}}</H1>
     </caption>
@@ -19,9 +19,9 @@
         <td>{{country.capitalPopulation | number}}</td>
     </tr>
     <tr>
-        <td class="tar width50">3 Neighbors:&nbsp;</td>
+        <td class="tar width50">{{country.countryNeighborsCount }} Neighbors:&nbsp;</td>
         <td>
-            <ul ng-class="{true:'padleft20', false:'unstyledlist'}[countryNeighbors.length > 1 ]">
+            <ul ng-class="{true:'padleft20', false:'unstyledlist'}[country.countryNeighborsCount > 0 ]">
                 <li ng-repeat="ncountry in country.countryNeighbors">{{ncountry.countryName}}</li>
             </ul>
         </td>

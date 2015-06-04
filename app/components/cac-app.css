@@ -26,6 +26,7 @@
 }
 .padleft20 {
   padding-left: 20px;
+  margin: 0;
 }
 .group:before,
 .group:after {
@@ -90,12 +91,35 @@ main {
 header {
   border-bottom: 1px solid #ccc;
 }
-.centerTable {
+.capitalTable {
   width: 400px;
   margin: 0 auto;
 }
-.centerTable td {
+.capitalTable td {
   padding: 5px;
+}
+.countriesTable:hover {
+  cursor: pointer;
+}
+.countriesTable a {
+  color: #316ddd;
+}
+.countriesTable tr {
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  border: 1px solid #cbcbcb;
+  background-color: #f3f3f3;
+}
+.countriesTable tr:first-of-type {
+  background-color: #fdfdfd;
+}
+.countriesTable tr:nth-child(even) {
+  background-color: #d8d8d8;
+}
+.countriesTable tr:hover {
+  background-color: #fffc5f;
+  cursor: pointer;
 }
 .loading {
   position: relative;
@@ -110,5 +134,5 @@ header {
   top: 0;
   z-index: 1000;
   background: rgba(255, 255, 255, 0.9) no-repeat center center;
-  background-image: url('../img/loading-animation.gif');
+  background-image: url('../img/ajax-loader.gif');
 }

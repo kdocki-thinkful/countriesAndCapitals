@@ -1,24 +1,24 @@
 <div>
-    <table class="pure-table">
+    <table class="countriesTable pure-table pure-table-horizontal ">
         <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Country Code</th>
-                <th scope="col">Capital</th>
-                <th scope="col">Area in KM2</th>
-                <th scope="col">Population</th>
-                <th scope="col">Continent</th>
-            </tr>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Country Code</th>
+            <th scope="col">Capital</th>
+            <th scope="col">Area in KM2</th>
+            <th scope="col">Population</th>
+            <th scope="col">Continent</th>
+        </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="country in countries">
-                <th scope="row"><a href="#/countries/{{country.countryName}}/capital">{{country.countryName}}</a></th>
-                <td>{{country.countryCode}}</td>
-                <td>{{country.capital}}</td>
-                <td>{{country.areaInSqKm | number}}</td>
-                <td>{{country.population | number}}</td>
-                <td>{{country.continent}}</td>
-            </tr>
+        <tr ng-repeat="country in countries" ng-click="rowClick(country)">
+            <td>{{country.countryName}}</td>
+            <td>{{country.countryCode}}</td>
+            <td>{{country.capital}}</td>
+            <td>{{country.areaInSqKm | number}}</td>
+            <td>{{country.population | number}}</td>
+            <td>{{country.continent}}</td>
+        </tr>
         </tbody>
     </table>
 </div>

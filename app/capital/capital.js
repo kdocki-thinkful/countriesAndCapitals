@@ -5,46 +5,51 @@ viewsModule.config(function ($routeProvider) {
     });
 });
 
-viewsModule.controller('CapitalCtrl', ['$scope', '$routeParams', 'countryCache', 'geoRequest', function ($scope, $routeParams, countryCache, geoRequest) {
+viewsModule.controller('CapitalCtrl', ['$rootScope', '$scope', '$routeParams', '$q', 'countryCache', 'geoRequest', function ($rootScope, $scope, $routeParams, $q, countryCache, geoRequest) {
 
-    var cache = countryCache.get('countries');
+    $rootScope.isLoading = true;
 
+    function findCountry () {
+        return _.find(countryCache.get('countries'), function (country) {
+            return country.countryName == $routeParams.country;
+        });
+    }
     function getAdditionalInfo() {
 
-        geoRequest('searchJSON', {
-            q: $scope.country.capital,
-            type: 'JSON',
-            country: $scope.country.countryCode,
-            name_equals: $scope.country.capital,
-            isNameRequired: true
-        }).then(function (data) {
-            $scope.country.capitalPopulation = Math.max.apply(Math, $.map(data.geonames, function (o) {
+        var search = geoRequest('searchJSON', {
+                q: $scope.country.capital,
+                type: 'JSON',
+                country: $scope.country.countryCode,
+                name_equals: $scope.country.capital,
+                isNameRequired: true
+            }),
+            neighbours = geoRequest('neighboursJSON', {geonameId: $scope.country.geonameId});
+
+        search.then(function (data) {
+            $scope.country.capitalPopulation = Math.max.apply(Math, _.map(data.geonames, function (o) {
                 return o.population;
-            }))
+            }));
+        });
+        neighbours.then(function (data) {
+            $scope.country.countryNeighbors = data.geonames.length === 0 ? [{countryName: "0 Results Returned"}] : data.geonames.length > 3 ? data.geonames.slice(0, 3) : data.geonames;
+            $scope.country.countryNeighborsCount = data.geonames.length === 0 ? 0 : data.geonames.length > 3 ? 3 : data.geonames.length;
         });
 
-        geoRequest('neighboursJSON', {geonameId: $scope.country.geonameId}).then(function (data) {
-            $scope.country.countryNeighbors = data.geonames.length === 0 ? [{countryName: "0 Results Returned"}] : data.geonames.length > 2 ? data.geonames.slice(0, 3) : data.geonames;
+        $q.all([search, neighbours]).then(function () {
+            $rootScope.isLoading = false;
         });
 
     }
 
-    if (cache) {
-        $scope.country = _.find(cache, function (country) {
-            return country.countryName == $routeParams.country;
-        });
-
+    if (countryCache.get('countries')) {
+        $scope.country = findCountry();
         getAdditionalInfo();
 
     } else {
-        geoRequest('countryInfoJSON').then(function (data) {
-
+        var getCountries = geoRequest('countryInfoJSON');
+        getCountries.then(function (data) {
             countryCache.put('countries', data.geonames);
-
-            $scope.country = _.find(countryCache.get('countries'), function (country) {
-                return country.countryName == $routeParams.country;
-            });
-
+            $scope.country = findCountry();
             getAdditionalInfo();
 
         });

@@ -13,7 +13,7 @@ header {
 }
 
 // Views ***************************************************************************************************************
-.centerTable {
+.capitalTable {
   width: 400px;
   margin: 0 auto;
   td {
@@ -21,19 +21,46 @@ header {
   }
 }
 
+.countriesTable {
+  &:hover {
+    cursor: pointer;
+  }
+  a {
+    color: #316ddd;
+  }
+  tr {
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    border: 1px solid #cbcbcb;
+    background-color: #f3f3f3;
+    &:first-of-type {
+      background-color: #fdfdfd;
+    }
+    &:nth-child(even){
+      background-color: #d8d8d8;
+    }
+    &:hover {
+      background-color: #fffc5f;
+      cursor: pointer;
+    }
+  }
+}
+
 // Loading Spinner *****************************************************************************************************
 .loading {
-  position:relative;
-  height:100%;
+  position: relative;
+  height: 100%;
 }
+
 .loading:before {
-  position:absolute;
-  content:"";
-  left:0;
-  bottom:0;
-  right:0;
-  top:0;
-  z-index:1000;
-  background:rgba(255,255,255,0.9) no-repeat center center;
-  background-image: url('../img/loading-animation.gif');
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.9) no-repeat center center;
+  background-image: url('../img/ajax-loader.gif');
 }
