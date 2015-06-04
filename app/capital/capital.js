@@ -51,7 +51,6 @@ viewsModule.controller('CapitalCtrl', ['$rootScope', '$scope', '$routeParams', '
             countryCache.put('countries', data.geonames);
             $scope.country = findCountry();
             getAdditionalInfo();
-
         });
     }
 
