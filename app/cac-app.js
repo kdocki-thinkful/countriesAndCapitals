@@ -1,2 +1,4 @@
 angular.module('cacApp', ['ngMessages', 'ngRoute', 'ngAnimate', 'cacAppViews'])
-    .controller('MainCtrl', ['$rootScope', '$scope', function ($rootScope, $scope) {}]);
+    .config(['$routeProvider', function($routeProvider) {
+        $routeProvider.otherwise({redirectTo: '/'});
+    }]);

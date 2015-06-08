@@ -1,7 +1,7 @@
 angular.module('cacLibrary', [])
     .constant('GEO_API_PREFIX', 'http://api.geonames.org/')
     .constant('GEO_API_CREDS', '?username=red2678&')
-    .factory('geoRequest', function ($http, $q, GEO_API_PREFIX, GEO_API_CREDS) {
+    .factory('geoRequest', function (countryCache, $http, $q, GEO_API_PREFIX, GEO_API_CREDS) {
         return function (path, options) {
             function formUrl (obj){
                 var str = "";

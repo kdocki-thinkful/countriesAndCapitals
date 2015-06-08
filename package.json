@@ -18,6 +18,10 @@
     "gulp-rev": "^0.3.2",
     "gulp-sass": "^0.7.1",
     "gulp-uglify": "^0.3.0",
-    "gulp-usemin": "^0.3.3"
+    "gulp-usemin": "^0.3.3",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.12.36",
+    "karma-chrome-launcher": "^0.1.12",
+    "karma-jasmine": "^0.3.5"
   }
 }
