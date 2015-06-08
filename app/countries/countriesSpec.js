@@ -100,11 +100,7 @@ describe("Countries View", function () {
 
 
             $httpBackend.expectGET('http://api.geonames.org/countryInfoJSON?username=red2678&').respond(200, mockCountry);
-            $httpBackend.expectGET('countries/countries.html').respond(200);
-
-            $rootScope.$apply(function() {
-                $location.path('/countries');
-            });
+            $httpBackend.expectGET('home/home.html').respond(200);
 
             request.then(checkData);
 
