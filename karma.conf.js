@@ -26,10 +26,9 @@ module.exports = function (config) {
             'app/components/cac-app-views.js',
             'app/capital/capital.js',
             'app/countries/countries.js',
-            'app/countries/countriesSpec.js',
             'app/home/home.js',
-            'app/home/homeSpec.js',
-            'app/cac-app.js'
+            'app/cac-app.js',
+            'app/**/**Spec.js'
         ],
 
 
